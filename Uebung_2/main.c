@@ -69,7 +69,7 @@ int main() {
 				printf("\n#INFO# - Bitte Schrittfolge angeben: ");
 				scanf("%lf", &steps);
 				(steps == 0) ? printf("\n#ERROR# - Ein Problem wurde festgestellt. "
-									  "Schrittfolge ist 0.",
+									  "Schrittfolge ist 0."
 									  ) : (loop += 1); printf("test"); 
 			}
 		}
