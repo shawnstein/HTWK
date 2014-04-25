@@ -1,6 +1,6 @@
 // Compilen: cc main.c -o uebung -lm
 // ausfuehren: ./uebung
-
+// By Sandor Farbas
 
 #include <stdio.h>
 #include <stdlib.h>
