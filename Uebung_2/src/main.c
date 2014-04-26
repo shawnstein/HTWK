@@ -1,19 +1,26 @@
 // Compilen: cc main.c -o uebung -lm
 // ausfuehren: ./uebung
+// cc /usr/home/sandor/Dokumente/GitHub/HTWK/Uebung_2/src/main.c -o /usr/home/sandor/Dokumente/GitHub/HTWK/Uebung_2/bin/a.out -lm
 
 /* Bindung zu Definitionen & weiteren Includes */
 #include "main.h"
 
+/* Einmal Runden bitte!*/
+int round_f(float x) { 
+	if(x > 0) return (int)(x + 0.5);
+	else return (int)(x - 0.5);
+}
+
 /* Speichern der Zahlen im Interval nach Schritten und Berechnung der log-Funktionen aus diesen */
-void operate(u_int from, u_int to, double steps, u_int operation) {	
+void operate(u_int from, u_int to, float steps, u_int operation) {	
 	u_int index = 0;												/* Indexierung */
-	double loop;													/* Init der Schleifevar nach C89-Standard */
-	
+	float loop;													/* Init der Schleifevar nach C89-Standard */
+
 	/* Anlegen mehrer Zeiger-Arrays aus der Groesse des Intervals */
-	struct element *ptr = (struct element *) malloc(((to - from)/steps) * sizeof(struct element));
+	struct element *ptr = (struct element *) malloc(round_f((round_f(to - from) / steps)) * sizeof(struct element));
 	
 	for(loop = 0; loop < (to - from); loop += steps) {				/* Schleife in Dezimalschritten*/	
-		ptr[index].num = (loop) + (double)from; 					/* Addition des Startintervals zum aktuellen Schleifenindex */					
+		ptr[index].num = (loop) + (float)from; 					/* Addition des Startintervals zum aktuellen Schleifenindex */					
 		switch(operation) {
 			case LG: ptr[index].res = log(ptr[index].num); break; 	/* Berechnung */			
 			case LN: ptr[index].res = log10(ptr[index].num); break;	/* Berechnung */		
@@ -40,9 +47,10 @@ void print_tbl(u_int index, struct element *elem) {
 }
 
 int main() {
-	u_int opt = -1, from, to;								/* Option, Interval-Start, Interval-Ziel */																	
+	u_int opt = -1, from, to;										/* Option, Interval-Start, Interval-Ziel */																	
 	u_char loop;													/* Init Schleifen-Var */									
-	double steps = 0;												/* Schrittfolge */								
+	float steps;												/* Schrittfolge */				
+
 	
 	system("clear");												/* Saeubern der Konsole */								
 	printf("\nlog-Funktionen by Sandor Farbas\n");						
@@ -52,25 +60,25 @@ int main() {
 		printf(">> ");
 		scanf("%u", &opt);
 		while(loop != 3) {
-			printf("\n#INFO# - Bitte Start-Interval angeben: ");
-			scanf("%d", &from);
+			printf("\n#INFO# - Bitte Start-Intervall angeben: ");
+			scanf("%u", &from);
 			(from == 0) ? printf("\n#ERROR# -  Ein Problem wurde festgestellt."
-								 "Start-Interval = %d", 
+								 "Start-Intervall = %d", 
 								 from) : (loop += 1);
 			
 			if(loop == 1) {
 				printf("\n#INFO# - Bitte Ziel-Intervall angeben: "); 
-				scanf("%d", &to);
+				scanf("%u", &to);
 				(to < from) ? printf("\n#ERROR# - Ein Problem wurde festgestellt. "
-									 "Ziel-Interval kleiner als Start-Interval."
+									 "Ziel-Interval kleiner als Start-Intervall."
 									 ) : (loop += 1);
 			}
 			if(loop == 2) {
 				printf("\n#INFO# - Bitte Schrittfolge angeben: ");
-				scanf("%lf", &steps);
+				scanf("%f", &steps);			 /* segfault nach scanf */				
 				(steps == 0) ? printf("\n#ERROR# - Ein Problem wurde festgestellt. "
 									  "Schrittfolge ist 0."
-									  ) : (loop += 1); printf("test"); 
+									  ) : (loop += 1); 
 			}
 		}
 		switch(opt) {

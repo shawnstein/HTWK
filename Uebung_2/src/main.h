@@ -24,7 +24,8 @@ struct element {
 };
 
 /* Prototypen */
-void operate(u_int , u_int , double, u_int);
+int round_f(float);
+void operate(u_int , u_int , float, u_int);
 void print_tbl(u_int, struct element *);	
 
 #endif
