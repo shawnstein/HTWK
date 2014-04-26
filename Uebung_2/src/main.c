@@ -43,7 +43,7 @@ int main() {
 	u_int opt = -1, from, to;								/* Option, Interval-Start, Interval-Ziel */																	
 	u_char loop;													/* Init Schleifen-Var */									
 	double steps = 0;												/* Schrittfolge */								
-
+	
 	system("clear");												/* Saeubern der Konsole */								
 	printf("\nlog-Funktionen by Sandor Farbas\n");						
 	while(opt) {	
