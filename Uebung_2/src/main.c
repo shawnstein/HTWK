@@ -54,45 +54,44 @@ void print_tbl(u_int index, struct element *elem) {
 int main() {
 	u_int opt = -1, from, to;										/* Option, Interval-Start, Interval-Ziel */																	
 	u_char loop;													/* Init Schleifen-Var */									
-	float steps;												/* Schrittfolge */				
+	float steps;													/* Schrittfolge */				
 
-	
 	system("clear");												/* Saeubern der Konsole */								
 	printf("\nlog-Funktionen by Sandor Farbas\n");						
 	while(opt) {	
 		loop = 0;									
-		printf("\n#INFO# - Bitte Option waehlen: \n[1] lg(x)\n[2] ln(x) \n[3] ld(x)\n[4] Exit\n\n"); 
+		printf("\n#INFO# - Bitte Option waehlen: \n[1] lg(x)\n[2] ln(x) \n[3] ld(x)\n[0] Exit\n\n"); 
 		printf(">> ");
 		scanf("%u", &opt);
-		while(loop != 3) {
-			printf("\n#INFO# - Bitte Start-Intervall angeben: ");
-			scanf("%u", &from);
-			(from == 0) ? printf("\n#ERROR# -  Ein Problem wurde festgestellt."
-								 "Start-Intervall = %d", 
-								 from) : (loop += 1);
-			
-			if(loop == 1) {
-				printf("\n#INFO# - Bitte Ziel-Intervall angeben: "); 
-				scanf("%u", &to);
-				(to < from) ? printf("\n#ERROR# - Ein Problem wurde festgestellt. "
-									 "Ziel-Interval kleiner als Start-Intervall."
-									 ) : (loop += 1);
+		if(opt == 0) return 1;
+		else {
+			while(loop != 3) {
+				printf("\n#INFO# - Bitte Start-Intervall angeben: ");
+				scanf("%u", &from);
+				(from == 0) ? printf("\n#ERROR# -  Ein Problem wurde festgestellt."
+									 "Start-Intervall = %d", 
+									 from) : (loop += 1);
+				if(loop == 1) {
+					printf("\n#INFO# - Bitte Ziel-Intervall angeben: "); 
+					scanf("%u", &to);
+					(to < from) ? printf("\n#ERROR# - Ein Problem wurde festgestellt. "
+										 "Ziel-Interval kleiner als Start-Intervall."
+										 ) : (loop += 1);
+				}
+				if(loop == 2) {
+					printf("\n#INFO# - Bitte Schrittfolge angeben: ");
+					scanf("%f", &steps);			 /* segfault nach scanf */			
+					(steps == 0) ? printf("\n#ERROR# - Ein Problem wurde festgestellt. "
+										  "Schrittfolge ist 0."
+										  ) : (loop += 1); 
+				}
 			}
-			if(loop == 2) {
-				printf("\n#INFO# - Bitte Schrittfolge angeben: ");
-				scanf("%f", &steps);			 /* segfault nach scanf */			
-				(steps == 0) ? printf("\n#ERROR# - Ein Problem wurde festgestellt. "
-									  "Schrittfolge ist 0."
-									  ) : (loop += 1); 
-				printf("%u", loop);
+			switch(opt) {
+				case LG: operate(from, to, steps, LG); break;
+				case LN: operate(from, to, steps, LN); break;
+				case LD: operate(from, to, steps, LD); break;
+				default: printf("#ERROR' - Unbekannter Befehl!");
 			}
-		}
-		switch(opt) {
-			case LG: operate(from, to, steps, LG); break;
-			case LN: operate(from, to, steps, LN); break;
-			case LD: operate(from, to, steps, LD); break;
-			case 4: printf("#INFO# - Beende Programm..."); break;
-			default: printf("#ERROR' - Unbekannter Befehl!");
 		}
 	} return 1;
 }
