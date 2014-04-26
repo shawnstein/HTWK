@@ -18,20 +18,22 @@ void operate(u_int from, u_int to, float steps, u_int operation) {
 
 	/* Anlegen mehrer Zeiger-Arrays aus der Groesse des Intervals */
 	struct element *ptr = (struct element *) calloc(round_f((to - from) / steps) , sizeof(struct element));
-	assert(!ptr); {
-      fprintf(stderr, "Fehler im calloc bei __LINE__\n");
-      exit(1);
+	if(!ptr){
+		fprintf(stderr, "Fehler im calloc bei __LINE__\n");
+		exit(1);
     }
-	for(loop = 0; loop < (to - from); loop += steps) {				/* Schleife in Dezimalschritten*/	
-		ptr[index].num = (loop) + (float)from; 					/* Addition des Startintervals zum aktuellen Schleifenindex */					
-		switch(operation) {
-			case LG: ptr[index].res = log(ptr[index].num); break; 	/* Berechnung */			
-			case LN: ptr[index].res = log10(ptr[index].num); break;	/* Berechnung */		
-			case LD: ptr[index].res = log2(ptr[index].num); break; 	/* Berechnung */					
-		} index++;													/* Indexierung um 1 erhoehen */	
-	} 
-	print_tbl(index-1, ptr);										/* Ausgabe der Datensturktur inklusive der Indexierung */							
-	free(ptr);														/* Freigabe des beanspruchten Speichers */		
+	else {
+		for(loop = 0; loop < (to - from); loop += steps) {				/* Schleife in Dezimalschritten*/	
+			ptr[index].num = (loop) + (float)from; 					/* Addition des Startintervals zum aktuellen Schleifenindex */					
+			switch(operation) {
+				case LG: ptr[index].res = log(ptr[index].num); break; 	/* Berechnung */			
+				case LN: ptr[index].res = log10(ptr[index].num); break;	/* Berechnung */		
+				case LD: ptr[index].res = log2(ptr[index].num); break; 	/* Berechnung */					
+			} index++;													/* Indexierung um 1 erhoehen */	
+		} 
+		print_tbl(index-1, ptr);										/* Ausgabe der Datensturktur inklusive der Indexierung */							
+		free(ptr);														/* Freigabe des beanspruchten Speichers */		
+	}
 }	
 
 /* Ausgabe der Datensturktur inklusive der Indexierung */
