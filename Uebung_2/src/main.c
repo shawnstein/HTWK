@@ -89,13 +89,6 @@ int main() {
 					(steps == 0) ? printf("\n%s #ERROR# - Ein Problem wurde festgestellt. "
 										  "Schrittfolge ist 0.",
 										  __TIME__) : (loop += 1); 
-
-					printf("\n#INFO# - Bitte Schrittfolge angeben: ");
-					scanf("%f", &steps);			 	/* segfault nach scanf */			
-					(steps == 0) ? printf("\n#ERROR# - Ein Problem wurde festgestellt. "
-										  "Schrittfolge ist 0."
-										  ) : (loop += 1); 
-
 				}
 			}
 			switch(opt) {
