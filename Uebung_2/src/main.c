@@ -1,6 +1,7 @@
 // Compilen: cc main.c -o uebung -lm
 // ausfuehren: ./uebung
-// cc /usr/home/sandor/Dokumente/GitHub/HTWK/Uebung_2/src/main.c -o /usr/home/sandor/Dokumente/GitHub/HTWK/Uebung_2/bin/a.out -lm
+// cc /usr/home/sandor/Dokumente/GitHub/HTWK/Uebung_2/src/main.c -o /usr/home/sandor/Dokumente/GitHub/HTWK/Uebung_2/bin/a.out -lm -g -std=c89
+// run with gbd -> gdb ./a.out
 
 /* Bindung zu Definitionen & weiteren Includes */
 #include "main.h"
@@ -19,7 +20,7 @@ void operate(u_int from, u_int to, float steps, u_int operation) {
 	/* Anlegen mehrer Zeiger-Arrays aus der Groesse des Intervals */
 	struct element *ptr = (struct element *) calloc(round_f((to - from) / steps) , sizeof(struct element));
 	if(!ptr){
-		fprintf(stderr, "Fehler im calloc bei __LINE__\n");
+		fprintf(stderr, "%s Fehler im calloc bei Line %d\n", __TIME__, __LINE__);
 		exit(1);
     }
 	else {
@@ -41,14 +42,17 @@ void print_tbl(u_int index, struct element *elem) {
 	char c;															/* Var zur Speicherung des Tastatur-Interrupts */
 	u_int fast_index = 1; 											/* Neuordnung des Indexes, beginnend mit 1 (nicht 0) */
 	
-	printf("\n#INFO# - Zeige Ergebnisse... \n");						
-	for(u_int i = 0; i < index; i++) {						
-		printf("%d. %f - %f\t|", fast_index, elem[i].num, elem[i].res); 						
-		if(!(fast_index % 10) && (fast_index != 0)) {								
-			c = getchar(); 											/* Speichern des Tastaturinterrupts */
-			if(c == '\n') printf("\n-------------\n");				/* Vergleich der Tastatureingabe */			
+	if(getchar() == '\n') printf("%s #INFO# - Ignoriere letztes [ENTER]... \n", __TIME__);
+	printf("%s #INFO# - Zeige Ergebnisse... \n", __TIME__);	
+	printf("\n\tIndex\tZahl\t\t-\tErgebnis");
+	printf("\n\t----------------------------------------\n");	
+	for(u_int i = 0; i <= index; i++) {						
+		printf("\n\t%d.\t%.2f\t\t-\t%f\t", fast_index, elem[i].num, elem[i].res); 						
+		if(((fast_index % 10) == 0) || (fast_index == 10)) {
+			printf("Weiter mit [ENTER]...");
+			if(getchar() == '\n') printf("\n\t----------------------------------------\n");				/* Vergleich der Tastatureingabe */			
 		} fast_index++; 											/* Indexierung um 1 erhoehen */
-	} printf("\n=============\n");								
+	} printf("\n\t\t -END OF STREAM-\n\t========================================\n");								
 }
 
 int main() {
@@ -60,37 +64,37 @@ int main() {
 	printf("\nlog-Funktionen by Sandor Farbas\n");						
 	while(opt) {	
 		loop = 0;									
-		printf("\n#INFO# - Bitte Option waehlen: \n[1] lg(x)\n[2] ln(x) \n[3] ld(x)\n[0] Exit\n\n"); 
+		printf("\n%s #INFO# - Bitte Option waehlen: \n\t[1] lg(x)\t[2] ln(x) \t[3] ld(x)\t[0] Exit\n\n", __TIME__); 
 		printf(">> ");
 		scanf("%u", &opt);
 		if(opt == 0) return 1;
 		else {
 			while(loop != 3) {
-				printf("\n#INFO# - Bitte Start-Intervall angeben: ");
+				printf("%s #INFO# - Bitte Start-Intervall angeben: ", __TIME__);
 				scanf("%u", &from);
-				(from == 0) ? printf("\n#ERROR# -  Ein Problem wurde festgestellt."
+				(from == 0) ? printf("#ERROR# -  Ein Problem wurde festgestellt."
 									 "Start-Intervall = %d", 
 									 from) : (loop += 1);
 				if(loop == 1) {
-					printf("\n#INFO# - Bitte Ziel-Intervall angeben: "); 
+					printf("%s #INFO# - Bitte Ziel-Intervall angeben: ", __TIME__); 
 					scanf("%u", &to);
-					(to < from) ? printf("\n#ERROR# - Ein Problem wurde festgestellt. "
-										 "Ziel-Interval kleiner als Start-Intervall."
-										 ) : (loop += 1);
+					(to < from) ? printf("%s #ERROR# - Ein Problem wurde festgestellt. "
+										 "Ziel-Interval kleiner als Start-Intervall.", 
+										 __TIME__) : (loop += 1);
 				}
 				if(loop == 2) {
-					printf("\n#INFO# - Bitte Schrittfolge angeben: ");
+					printf("%s #INFO# - Bitte Schrittfolge angeben: ", __TIME__);
 					scanf("%f", &steps);			 /* segfault nach scanf */			
-					(steps == 0) ? printf("\n#ERROR# - Ein Problem wurde festgestellt. "
-										  "Schrittfolge ist 0."
-										  ) : (loop += 1); 
+					(steps == 0) ? printf("\n%s #ERROR# - Ein Problem wurde festgestellt. "
+										  "Schrittfolge ist 0.",
+										  __TIME__) : (loop += 1); 
 				}
 			}
 			switch(opt) {
 				case LG: operate(from, to, steps, LG); break;
 				case LN: operate(from, to, steps, LN); break;
 				case LD: operate(from, to, steps, LD); break;
-				default: printf("#ERROR' - Unbekannter Befehl!");
+				default: printf("%s #ERROR' - Unbekannter Befehl!", __TIME__);
 			}
 		}
 	} return 1;
