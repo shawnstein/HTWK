@@ -53,15 +53,6 @@ void print_tbl(u_int index, struct element *elem) {
 			if(getchar() == '\n') printf("\n\t----------------------------------------\n");				/* Vergleich der Tastatureingabe */			
 		} fast_index++; 											/* Indexierung um 1 erhoehen */
 	} printf("\n\t\t -END OF STREAM-\n\t========================================\n");								
-
-	printf("\n#INFO# - Zeige Ergebnisse... \n");						
-	for(u_int i = 0; i < index; i++) {						
-		printf("%d. %f - %f\t|", fast_index, elem[i].num, elem[i].res); 						
-		if(!(fast_index % 10) && (fast_index != 0)) {								
-			c = getchar(); 							/* Speichern des Tastaturinterrupts */
-			if(c == '\n') printf("\n-------------\n");			/* Vergleich der Tastatureingabe */			
-		} fast_index++; 							/* Indexierung um 1 erhoehen */
-	} printf("\n=============\n");								
 }
 
 int main() {
