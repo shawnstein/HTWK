@@ -1,4 +1,3 @@
-// Compilen: cc main.c -o uebung -lm
 // ausfuehren: ./uebung
 // cc /usr/home/sandor/Dokumente/GitHub/HTWK/Uebung_2/src/main.c -o /usr/home/sandor/Dokumente/GitHub/HTWK/Uebung_2/bin/a.out -lm -g -std=c89
 // run with gbd -> gdb ./a.out
@@ -10,7 +9,7 @@
 int round_f(float x) { 
 	if(x > 0) return (int)(x + 0.5);
 	else return (int)(x - 0.5);
-}
+} 
 
 /* Speichern der Zahlen im Interval nach Schritten und Berechnung der log-Funktionen aus diesen */
 void operate(u_int from, u_int to, float steps, u_int operation) {	
@@ -63,7 +62,6 @@ void print_tbl(u_int index, struct element *elem) {
 			if(c == '\n') printf("\n-------------\n");			/* Vergleich der Tastatureingabe */			
 		} fast_index++; 							/* Indexierung um 1 erhoehen */
 	} printf("\n=============\n");								
-
 }
 
 int main() {
@@ -94,6 +92,7 @@ int main() {
 										 __TIME__) : (loop += 1);
 				}
 				if(loop == 2) {
+
 					printf("%s #INFO# - Bitte Schrittfolge angeben: ", __TIME__);
 					scanf("%f", &steps);			 /* segfault nach scanf */			
 					(steps == 0) ? printf("\n%s #ERROR# - Ein Problem wurde festgestellt. "
@@ -105,6 +104,7 @@ int main() {
 					(steps == 0) ? printf("\n#ERROR# - Ein Problem wurde festgestellt. "
 										  "Schrittfolge ist 0."
 										  ) : (loop += 1); 
+
 				}
 			}
 			switch(opt) {
@@ -114,5 +114,5 @@ int main() {
 				default: printf("%s #ERROR' - Unbekannter Befehl!", __TIME__);
 			}
 		}
-	} return 1;
+	} return 1; 
 }
