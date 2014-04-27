@@ -42,7 +42,7 @@ void print_tbl(u_int index, struct element *elem) {
 	char c;										/* Var zur Speicherung des Tastatur-Interrupts */
 	u_int fast_index = 1; 								/* Neuordnung des Indexes, beginnend mit 1 (nicht 0) */
 	
-<<<<<<< HEAD
+
 	if(getchar() == '\n') printf("%s #INFO# - Ignoriere letztes [ENTER]... \n", __TIME__);
 	printf("%s #INFO# - Zeige Ergebnisse... \n", __TIME__);	
 	printf("\n\tIndex\tZahl\t\t-\tErgebnis");
@@ -54,7 +54,7 @@ void print_tbl(u_int index, struct element *elem) {
 			if(getchar() == '\n') printf("\n\t----------------------------------------\n");				/* Vergleich der Tastatureingabe */			
 		} fast_index++; 											/* Indexierung um 1 erhoehen */
 	} printf("\n\t\t -END OF STREAM-\n\t========================================\n");								
-=======
+
 	printf("\n#INFO# - Zeige Ergebnisse... \n");						
 	for(u_int i = 0; i < index; i++) {						
 		printf("%d. %f - %f\t|", fast_index, elem[i].num, elem[i].res); 						
@@ -63,7 +63,7 @@ void print_tbl(u_int index, struct element *elem) {
 			if(c == '\n') printf("\n-------------\n");			/* Vergleich der Tastatureingabe */			
 		} fast_index++; 							/* Indexierung um 1 erhoehen */
 	} printf("\n=============\n");								
->>>>>>> 144f7cc1884244d7a3b490ac509af640b3750d2e
+
 }
 
 int main() {
@@ -94,19 +94,17 @@ int main() {
 										 __TIME__) : (loop += 1);
 				}
 				if(loop == 2) {
-<<<<<<< HEAD
 					printf("%s #INFO# - Bitte Schrittfolge angeben: ", __TIME__);
 					scanf("%f", &steps);			 /* segfault nach scanf */			
 					(steps == 0) ? printf("\n%s #ERROR# - Ein Problem wurde festgestellt. "
 										  "Schrittfolge ist 0.",
 										  __TIME__) : (loop += 1); 
-=======
+
 					printf("\n#INFO# - Bitte Schrittfolge angeben: ");
 					scanf("%f", &steps);			 	/* segfault nach scanf */			
 					(steps == 0) ? printf("\n#ERROR# - Ein Problem wurde festgestellt. "
 										  "Schrittfolge ist 0."
 										  ) : (loop += 1); 
->>>>>>> 144f7cc1884244d7a3b490ac509af640b3750d2e
 				}
 			}
 			switch(opt) {
