@@ -10,6 +10,7 @@ cc /home/sandor/Dokumente/GitHub/HTWK/ADS_Prog1/main.c -g -std=c99 && ./home/san
 
 typedef unsigned int u_int;
 
+// Arrays mit Zufallszahlen fuellen zwischen 0 und 100
 void fill(u_int *array, u_int len) {
 	time_t t;
 	time(&t);
@@ -18,6 +19,7 @@ void fill(u_int *array, u_int len) {
 	for(u_int i = 0; i < len; ++i) array[i] = rand() % 100;
 }
 
+// eigentliche bubblesort funktion
 u_int sort(u_int *array, u_int len) {
 	u_int steps = 0;
 	for(u_int i = 0; i < len; ++i) {
