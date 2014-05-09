@@ -32,7 +32,7 @@ u_int sort(u_int *array, u_int len) {
 int main() {
 	u_int array[10];
 	u_int len = sizeof(array) / sizeof(u_int);
-	
+	// test
 	fill(array, len);
 	printf("\ntotal steps: %d\n", sort(array, len));
 	for(u_int i = 0; i < sizeof(array)/4; ++i) printf("%d ", array[i]);
