@@ -1,7 +1,7 @@
 HTWK
 ====
 
-Release Dates:
+<b>Release Dates:</b>
   Uebung_1: 	unknown
   Uebung_2: 	27-04-2014
   Uebung_3: 	09-05-2014
