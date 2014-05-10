@@ -1,7 +1,7 @@
 /*
 git add * && git commit -m "Kommentar" && git push origin master
-cc ADS_Prog1/src/main.c -g -std=c99 -o ADS_Prog1/bin/a.out && gdb ./ADS_Prog1/bin/a.out
-cc ADS_Prog1/src/main.c -g -std=c99 -o ADS_Prog1/bin/a.out && ./ADS_Prog1/bin/a.out
+cc ADS/ADS_Prog1/src/main.c -g -std=c99 -o ADS/ADS_Prog1/bin/a.out && gdb ./ADS/ADS_Prog1/bin/a.out
+cc ADS/ADS_Prog1/src/main.c -g -std=c99 -o ADS/ADS_Prog1/bin/a.out && ./ADS/ADS_Prog1/bin/a.out
 */
 
 #include <stdio.h>
