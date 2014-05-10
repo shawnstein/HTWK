@@ -19,30 +19,54 @@ void fill(u_int *array, u_int len) {
 	for(u_int i = 0; i < len; ++i) array[i] = rand() % 100;
 }
 
+void swap(u_int *a, u_int *b) {
+	u_int swp = *b;
+	*b = *a;
+	*a = swp;
+}
+
 // eigentliche bubblesort funktion
-u_int sort(u_int *array, u_int len) {
+void bubblesort(u_int *array, u_int len) {
 	u_int steps = 0;
 	for(u_int i = 0; i < (len - 1); ++i) {
 		for(u_int j = 0; j < (len - i - 1); ++j) {
 			if(array[j] > array[j + 1]) {
-				u_int swp = array[j];
-				array[j] = array[j + 1];
-				array[j + 1] = swp;
+				swap(&array[j], &array[j + 1]);
 				for(u_int k = 0; k < len; ++k) printf("%d ", array[k]);
 				printf("\n");
-				steps++;
 			}
 		}
 	}
-	return steps;
+}
+
+void slowsort(u_int *array, u_int i, u_int j) {
+	if(i >= j) return;
+	u_int m = (i + j) / 2;
+	slowsort(array, i, m);
+	slowsort(array, m + 1, j);
+	if(array[j] < array[m]) {
+		swap(&array[j], &array[m]);
+		for(u_int c = 0; c <= sizeof(array); ++c) printf("%d ", array[c]);
+		printf("\n");
+	}
+	slowsort(array, i, j - 1);
 }
 
 int main() {
-	u_int array[20];
+	u_int array[5];
 	u_int len = sizeof(array) / sizeof(u_int);
-
+	
+	printf("\nGenerate random numbers...");
 	fill(array, len);
-	printf("\nTotal steps: %d\n", sort(array, len));
+	
+	printf("\nSort by slowsort and print...\n");
+	slowsort(array, 0, 4);
+	
+	printf("\nGenerate random numbers...");
+	fill(array, len);
+	
+	printf("\nSort by bubblesort and print...\n");
+	bubblesort(array, len);
 	
 	return 0;
 }
