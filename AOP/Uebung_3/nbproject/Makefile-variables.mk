@@ -9,19 +9,19 @@ CND_DISTDIR=dist
 # Debug configuration
 CND_PLATFORM_Debug=GNU-Linux-x86
 CND_ARTIFACT_DIR_Debug=dist/Debug/GNU-Linux-x86
-CND_ARTIFACT_NAME_Debug=matrix_mult
-CND_ARTIFACT_PATH_Debug=dist/Debug/GNU-Linux-x86/matrix_mult
+CND_ARTIFACT_NAME_Debug=uebung_3
+CND_ARTIFACT_PATH_Debug=dist/Debug/GNU-Linux-x86/uebung_3
 CND_PACKAGE_DIR_Debug=dist/Debug/GNU-Linux-x86/package
-CND_PACKAGE_NAME_Debug=matrixmult.tar
-CND_PACKAGE_PATH_Debug=dist/Debug/GNU-Linux-x86/package/matrixmult.tar
+CND_PACKAGE_NAME_Debug=uebung3.tar
+CND_PACKAGE_PATH_Debug=dist/Debug/GNU-Linux-x86/package/uebung3.tar
 # Release configuration
 CND_PLATFORM_Release=GNU-Linux-x86
 CND_ARTIFACT_DIR_Release=dist/Release/GNU-Linux-x86
-CND_ARTIFACT_NAME_Release=matrix_mult
-CND_ARTIFACT_PATH_Release=dist/Release/GNU-Linux-x86/matrix_mult
+CND_ARTIFACT_NAME_Release=uebung_3
+CND_ARTIFACT_PATH_Release=dist/Release/GNU-Linux-x86/uebung_3
 CND_PACKAGE_DIR_Release=dist/Release/GNU-Linux-x86/package
-CND_PACKAGE_NAME_Release=matrixmult.tar
-CND_PACKAGE_PATH_Release=dist/Release/GNU-Linux-x86/package/matrixmult.tar
+CND_PACKAGE_NAME_Release=uebung3.tar
+CND_PACKAGE_PATH_Release=dist/Release/GNU-Linux-x86/package/uebung3.tar
 #
 # include compiler specific variables
 #
