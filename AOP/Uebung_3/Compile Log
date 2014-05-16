@@ -1,0 +1,28 @@
+Copying project files to /home/sandor/.netbeans/remote/razorbb.servehttp.com/sandor-notebook-Windows-x86_64 at sandor@razorbb.servehttp.com
+Building project files list...
+Checking directory structure...
+Checking links...
+Uploading changed files:
+	Zipping changed files...
+	Uploading zip to sandor@razorbb.servehttp.com:456...
+	Unzipping changed files...
+Uploading changed files finished successfully.
+
+"/usr/bin/make" -f nbproject/Makefile-Debug.mk QMAKE= SUBPROJECTS= .build-conf
+make[1]: Entering directory `/home/sandor/.netbeans/remote/razorbb.servehttp.com/sandor-notebook-Windows-x86_64/C/Users/Sandor/Documents/GitHub/HTWK/AOP/Uebung_3'
+"/usr/bin/make"  -f nbproject/Makefile-Debug.mk dist/Debug/GNU-Linux-x86/uebung_3
+make[2]: Entering directory `/home/sandor/.netbeans/remote/razorbb.servehttp.com/sandor-notebook-Windows-x86_64/C/Users/Sandor/Documents/GitHub/HTWK/AOP/Uebung_3'
+make[2]: Warning: File `anne_main.c' has modification time 0,0057 s in the future
+mkdir -p build/Debug/GNU-Linux-x86
+rm -f "build/Debug/GNU-Linux-x86/anne_main.o.d"
+gcc -std=c89   -c -g -MMD -MP -MF "build/Debug/GNU-Linux-x86/anne_main.o.d" -o build/Debug/GNU-Linux-x86/anne_main.o anne_main.c
+mkdir -p build/Debug/GNU-Linux-x86
+rm -f "build/Debug/GNU-Linux-x86/main.o.d"
+gcc -std=c89   -c -g -MMD -MP -MF "build/Debug/GNU-Linux-x86/main.o.d" -o build/Debug/GNU-Linux-x86/main.o main.c
+mkdir -p dist/Debug/GNU-Linux-x86
+gcc -std=c89    -o dist/Debug/GNU-Linux-x86/uebung_3 build/Debug/GNU-Linux-x86/anne_main.o build/Debug/GNU-Linux-x86/main.o 
+make[2]: warning:  Clock skew detected.  Your build may be incomplete.
+make[2]: Leaving directory `/home/sandor/.netbeans/remote/razorbb.servehttp.com/sandor-notebook-Windows-x86_64/C/Users/Sandor/Documents/GitHub/HTWK/AOP/Uebung_3'
+make[1]: Leaving directory `/home/sandor/.netbeans/remote/razorbb.servehttp.com/sandor-notebook-Windows-x86_64/C/Users/Sandor/Documents/GitHub/HTWK/AOP/Uebung_3'
+
+BUILD SUCCESSFUL (total time: 778ms)
