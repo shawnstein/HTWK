@@ -1,67 +1,88 @@
+/* 
+ * File:   main.c
+ * Author: Sandor
+ *
+ * Created on 16. Mai 2014, 16:20
+ */
+
 #include <stdio.h>
 #include <stdlib.h>
-#include <signal.h>
-#include <string.h>
 
+typedef unsigned int uint;
+typedef struct _Matrix {
+    uint row;
+    uint column;
+    uint length;    
+} matrix;
+
+void multiplyMatrix(int **matrixA, matrix *ptr) {
+
+    uint row = 0, column = 0;
+    matrixA[0][0] = 1;
+    printf("%d", matrixA[0][0]);
+    for(row; row < ptr[0].row; row++) {
+        for(column; column < ptr[0].column; column++) {    
+            matrixA[1][1] = 1;
+        }
+    }
+}
+
+void createMatrix() {
+    matrix *ptr = (matrix *) calloc(2, sizeof(matrix));
+    if(ptr != NULL) {    
+        printf("Spaltenanzahl der Matrix A >> ");
+        scanf("%d", &ptr[0].column);
+        printf("Zeilenanzahl der Matrix A >> ");
+        scanf("%d", &ptr[0].row);
+        printf("Spaltenanzahl der Matrix B >> ");
+        scanf("%d", &ptr[1].column);
+        printf("Zeilenanzahl der Matrix B >> ");
+        scanf("%d", &ptr[1].row);   
+
+        int **dynArray = (int**) calloc(ptr[0].row, ptr[0].column);
+        if(dynArray != NULL) {
+            printf("test");
+            multiplyMatrix(dynArray, ptr);
+
+            free((void*)dynArray);
+        }
+    }   
+}
+
+int main() {
+    createMatrix();
+    
+    return 0;
+}
 /*
-void signal_callback_handler(int signum) {
-    printf("Ausgeloestes Signal %d\n", signum);
-	printf("mache noch mehr irgendwas"); 
-	exit(signum);
-}
-
+#include <stdio.h>
+#include <math.h>
+#include <ctype.h>
 int main() {
-	signal(SIGINT, signal_callback_handler);	// Warte auf Interrupt und gib es dem Handler
 
-	while(1) {
-		printf("Mache irgendwas.\n");
-		sleep(1);
+    int A[2][2] = {1, 2, 3, 4};
+    int B[2][2] = {1, 2, 3, 4};
+    int C[2][2];
+    int i, j, k;
+
+
+    printf("\nProdukt beider Matrizen A*B: ");
+    for (i = 0; i < 2; i++) {
+	printf("\n");
+	for (j = 0; j < 2; j++) { 
+            for(k = 0; k < 2; k++ )
+                C[i][j] += A[k][j] * B[i][k];
 	}
-	return 0;
+    }
+    printf("test [%d]", C[1][1]);
+    
+    for (i = 0; i < 2; i++) {
+        printf("\n");
+        for (j = 0; j < 2; j++) {
+                printf("[%d]", C[i][j]); 
+        }
+    }
+    
+    return 0;
 }
-*/
-
-typedef unsigned int u_int;
-      
-struct text { 
-	char placeholder[255];
-	struct text *next;
-};		  
-
-
-void printList(struct text *l) {
-	struct text *list;
-	list = l;
-	printf("%s\n", list->placeholder);
-	while(list->next != NULL) {
-		list = list->next;
-		printf("%s\n", list->placeholder);
-	}	
-}
-
-void insertList(struct text **list, char *txt) {
-	struct text *new;
-	struct text *list_iter = *list;
-	
-	new = (struct text *) calloc(1, sizeof(*new));
-	strcpy(new->placeholder, txt);
-	new->next = NULL;
-	
-	if(list_iter != NULL) {
-		while(list_iter->next != NULL) list_iter = list_iter->next;
-		list_iter->next = new;
-	} else *list = new;
-}
- 
-int main() {
-	struct text *list;
-	list = NULL;
-	
-	insertList(&list, "test");
-	insertList(&list, "test2");
-	insertList(&list, "test3");
-	
-	printList(list);
-
-	return 0;
-}
+ * */
