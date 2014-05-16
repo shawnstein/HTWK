@@ -7,13 +7,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-
-typedef unsigned int uint;
-typedef struct _Matrix {
-    uint row;
-    uint column;
-    uint length;    
-} matrix;
+#include "main.h"
 
 void multiplyMatrix(int **matrixA, matrix *ptr) {
 
