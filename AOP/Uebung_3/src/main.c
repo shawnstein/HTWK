@@ -23,16 +23,16 @@ void multiplyMatrix(int **matrixA, matrix *ptr) {
 
 void createMatrix() {
     matrix *ptr = (matrix *) calloc(2, sizeof(matrix));
+    
     if(ptr != NULL) {    
         printf("Spaltenanzahl der Matrix A >> ");
-        scanf("%d", &ptr[0].column);
+        scanf("%i", &ptr[0].column);
         printf("Zeilenanzahl der Matrix A >> ");
-        scanf("%d", &ptr[0].row);
+        scanf("%i", &ptr[0].row);
         printf("Spaltenanzahl der Matrix B >> ");
         scanf("%d", &ptr[1].column);
         printf("Zeilenanzahl der Matrix B >> ");
         scanf("%d", &ptr[1].row);   
-
         int **dynArray = (int**) calloc(ptr[0].row, ptr[0].column);
         if(dynArray != NULL) {
             printf("test");
