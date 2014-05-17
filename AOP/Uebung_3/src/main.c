@@ -10,15 +10,19 @@
 #include <assert.h>
 #include "main.h"
 
+/*Ausgabe der Matrix, die das Ergebnis speichert*/
 void printMatrix(int **matrix, coord *ptr) {
-    int i, j;
+    int i, j; /* Schleifenvariablen */
     printf("\nErgebnis Matrix C: \n");
-    for(i = 0; i < ptr[1].dimX; i++) {
+/* Schleife solange, wie der X Wert der 2.Matrix erreicht wird */
+    for(i = 0; i < ptr[1].dimX; i++) { 
+        /* Schleife solange, wie der Y Wert der 2.Matrix erreicht wird */
         for(j = 0; j < ptr[1].dimY; j++) { printf(" %d \t", matrix[i][j]); } 
         printf("\n");
     }
 }
 
+/* eigentliche berechnung beider matrizen */
 void multiplyMatrix(int **matrixA, int **matrixB, coord *ptr) {
     int **matrixC, i, j, k;
     
@@ -37,6 +41,7 @@ void multiplyMatrix(int **matrixA, int **matrixB, coord *ptr) {
     printMatrix(matrixC, ptr);
 }
 
+/* Einlesen der Werte für die matrizen */
 int getValues(uint m) {
     int value = 0;
     m == 0 ? printf("\nWert der Matrix A: ") : printf("\nWert der Matrix B: ");
@@ -45,9 +50,11 @@ int getValues(uint m) {
     return value;
 }
 
+/* Erstellen der beiden Matrizen */
 void createMatrix() {
+    /* 2 Zeiger auf je eine Matrix (2 dimensionales Feld!)*/
     int **matrixA, **matrixB, i = 0, j = 0;
-   
+    /* zeiger auf struktur coord für die eigenschaften der matrizen */
     coord *ptr = (coord *) calloc(2, sizeof(coord));
     if(ptr != NULL) {
         /*Erstellen Matrix A*/
@@ -55,9 +62,11 @@ void createMatrix() {
         scanf("%i", &ptr[0].dimX);
         printf("Y-Groesse fuer A: ");
         scanf("%i", &ptr[0].dimY);
-
+        
+        /* allokieren des ersten teil des feldes*/
         matrixA = (int **) calloc(ptr[0].dimX, sizeof(int *));
         assert(*matrixA == NULL);
+        /* allokieren des zweiten teil des feldes*/
         for(i = 0; i < ptr[0].dimX; i++) matrixA[i] = (int *) calloc(ptr[0].dimY, sizeof(int));
         /* Matrix A fertig*/
         
@@ -73,12 +82,14 @@ void createMatrix() {
         assert(**matrixB == NULL);
         /* Matrix B fertig*/
         
+        /* befüllen mit werten für beide felder*/
         for(i = 0; i < ptr[0].dimX; i++) {
             for(j = 0; j < ptr[0].dimY; j++) { matrixA[i][j] = getValues(0); }    
         }
         for(i = 0; i < ptr[1].dimX; i++) {
             for(j = 0; j < ptr[1].dimY; j++) { matrixB[i][j] = getValues(1); }    
         }
+        /* beide matrizen und die eigenschaften davon zur berechnung schicken */
         multiplyMatrix(matrixA, matrixB, ptr);
     }
 }
