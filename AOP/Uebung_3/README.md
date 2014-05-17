@@ -1,4 +1,4 @@
-README
+Übung 3 Matrizenmultiplikation
 ====
  
 <br><b>Project:</b>   matrix_mult
