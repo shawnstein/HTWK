@@ -13,6 +13,7 @@
 /*Ausgabe der Matrix, die das Ergebnis speichert*/
 void printMatrix(int **matrix, coord *ptr) {
     int i, j; /* Schleifenvariablen */
+    printf("Drucke Matrix... \n");
     printf("\nErgebnis Matrix C: \n");
 /* Schleife solange, wie der X Wert der 2.Matrix erreicht wird */
     for(i = 0; i < ptr[1].dimX; i++) { 
@@ -27,18 +28,16 @@ void multiplyMatrix(int **matrixA, int **matrixB, coord *ptr) {
     int **matrixC, i, j, k;
     
     matrixC = (int **) calloc(ptr[1].dimX, sizeof(int *));
-    assert(*matrixC == NULL);
-    
+    assert(*matrixC == NULL);    
     for(i = 0; i < ptr[1].dimX; i++) matrixC[i] = (int *) calloc(ptr[1].dimY, sizeof(int));
+    
     for(i = 0; i < ptr[1].dimX; i++) {
         for(j = 0; j < ptr[1].dimY; j++) {
             for(k = 0; k < ptr[1].dimX; k++) {
                 matrixC[i][j] += matrixA[i][k] * matrixB[k][j];
             }
         }
-    }  
-    printf("Drucke Matrix... \n");
-    printMatrix(matrixC, ptr);
+    } printMatrix(matrixC, ptr);
 }
 
 /* Einlesen der Werte für die matrizen */
