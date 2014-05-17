@@ -20,6 +20,7 @@ typedef struct Coord {
 
 void printMatrix(int **, coord *);
 void useMatrix(int **, int **, coord *);
+void multiplyMatrix(int **, int **, coord*);
 int getValues();
 
 #ifdef	__cplusplus
