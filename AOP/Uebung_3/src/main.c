@@ -67,7 +67,7 @@ void createMatrix() {
         matrixA = (int **) calloc(ptr[0].dimX, sizeof(int *));
         assert(*matrixA == NULL);
         /* allokieren des zweiten teil des feldes*/
-        for(i = 0; i < ptr[0].dimX; i++) matrixA[i] = (int *) calloc(ptr[0].dimY, sizeof(int));
+        for(i = 0; i < ptr[0].dimY; i++) matrixA[i] = (int *) calloc(ptr[0].dimY, sizeof(int));
         /* Matrix A fertig*/
         
         /*Erstellen Matrix B*/
