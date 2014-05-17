@@ -11,16 +11,16 @@
 #ifdef	__cplusplus
 extern "C" {
 #endif
-
+    
 typedef unsigned int uint;
-typedef struct _Matrix {
-    uint row;
-    uint column;
-    uint length;    
-} matrix;
+typedef struct Coord {
+    uint dimX;
+    uint dimY;    
+} coord;
 
-void multiplyMatrix(int **, matrix *);
-void createMatrix();
+void printMatrix(int **, coord *);
+void useMatrix(int **, int **, coord *);
+int getValues();
 
 #ifdef	__cplusplus
 }
