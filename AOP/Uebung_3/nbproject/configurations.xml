@@ -13,7 +13,6 @@
     <logicalFolder name="SourceFiles"
                    displayName="Source Files"
                    projectFiles="true">
-      <itemPath>src/anne_main.c</itemPath>
       <itemPath>src/main.c</itemPath>
     </logicalFolder>
     <logicalFolder name="TestFiles"
@@ -45,8 +44,6 @@
       </compileType>
       <item path="Compile Log" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="src/anne_main.c" ex="false" tool="0" flavor2="0">
-      </item>
       <item path="src/main.c" ex="false" tool="0" flavor2="0">
       </item>
       <item path="src/main.h" ex="false" tool="3" flavor2="0">
@@ -73,8 +70,6 @@
         </asmTool>
       </compileType>
       <item path="Compile Log" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="src/anne_main.c" ex="false" tool="0" flavor2="0">
       </item>
       <item path="src/main.c" ex="false" tool="0" flavor2="0">
       </item>
