@@ -27,7 +27,6 @@
       <itemPath>Makefile</itemPath>
     </logicalFolder>
     <itemPath>Compile Log</itemPath>
-    <itemPath>readme</itemPath>
   </logicalFolder>
   <projectmakefile>Makefile</projectmakefile>
   <confs>
@@ -45,7 +44,7 @@
       </compileType>
       <item path="Compile Log" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="readme" ex="false" tool="3" flavor2="0">
+      <item path="README.md" ex="false" tool="3" flavor2="0">
       </item>
       <item path="src/main.c" ex="false" tool="0" flavor2="0">
       </item>
@@ -74,7 +73,7 @@
       </compileType>
       <item path="Compile Log" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="readme" ex="false" tool="3" flavor2="0">
+      <item path="README.md" ex="false" tool="3" flavor2="0">
       </item>
       <item path="src/main.c" ex="false" tool="0" flavor2="0">
       </item>
