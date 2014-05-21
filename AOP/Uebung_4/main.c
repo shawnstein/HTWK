@@ -12,10 +12,8 @@
 #define OUT 0
 
 int main(int argc, char** argv) {
-    int c, n1, nw, nc, state;                               // Var Definition
-    
-    state = OUT;                                            // setze state auf 0
-    n1 = nw = nc = 0;                                       // Var Deklaration
+    int c, n1 = 0, nw = 0, nc = 0, state = OUT;             // Var Definition && Deklaration
+
     while((c = getchar()) != EOF) {                         // Hole Zeichen bis EOF (Strg + d)
         ++nc;                                               // Zaehle jedes eingegebene Zeichen
         if(c == '\n') ++n1;                                 // Zaehle Zeilenumbrueche als Zeilenanzahl dazu
